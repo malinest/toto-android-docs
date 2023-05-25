@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the buildPost method from the TotoController class, for the Dart programming language.">
+  <title>buildPost method - TotoController class - controller library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">toto_android</a></li>
+    <li><a href="../../controller_controller/controller_controller-library.html">controller</a></li>
+    <li><a href="../../controller_controller/TotoController-class.html">TotoController</a></li>
+    <li class="self-crumb">buildPost static method</li>
+  </ol>
+  <div class="self-name">buildPost</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">buildPost</span> static method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="https://api.flutter.dev/flutter/material/Card-class.html">Card</a></span>
+<span class="name ">buildPost</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="buildPost-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>, </span></li>
+<li><span class="parameter" id="buildPost-param-post"><span class="type-annotation"><a href="../../model_post/Post-class.html">Post</a></span> <span class="parameter-name">post</span>, </span></li>
+<li><span class="parameter" id="buildPost-param-controller"><span class="type-annotation"><a href="https://pub.dev/documentation/video_player/2.6.1/video_player/VideoPlayerController-class.html">VideoPlayerController</a>?</span> <span class="parameter-name">controller</span>, </span></li>
+<li><span class="parameter" id="buildPost-param-initializeVideoPlayerFuture"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span>?</span> <span class="parameter-name">initializeVideoPlayerFuture</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Renders the Post widget with the submitted data</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">static Card buildPost(
+    BuildContext context,
+    Post post,
+    VideoPlayerController? controller,
+    Future&lt;void&gt;? initializeVideoPlayerFuture) {
+  return Card(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(Sizes.postBorderRadius),
+    ),
+    margin: EdgeInsets.symmetric(
+        vertical: Sizes.postMarginVertical,
+        horizontal: Sizes.postMarginHorizontal),
+    child: InkWell(
+      onTap: () =&gt; Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =&gt; PostViewPage(post: post),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(Sizes.postPadding),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  &#47;&#47;Title of the post
+                  Expanded(
+                    child: Title(
+                      color: TotoColors.textColor,
+                      child: Text(
+                        post.title,
+                        style: TotoTextStyles.displayMedium(context),
+                      ),
+                    ),
+                  ),
+                  &#47;&#47;Author of the post
+                  Title(
+                    color: TotoColors.textColor,
+                    child: Text(
+                      post.username,
+                      style: TotoTextStyles.labelMedium(context),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  &#47;&#47;Id, date and filename of the post
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(Sizes.zero, Sizes.zero,
+                          Sizes.postDataPadding, Sizes.zero),
+                      child: Title(
+                        color: TotoColors.textColor,
+                        child: Text(
+                          &#39;${Strings.no}${post.id} ${post.date} ${post.filename}&#39;,
+                          style: TotoTextStyles.labelSmall(context),
+                        ),
+                      ),
+                    ),
+                  ),
+                  &#47;&#47;Number of comments
+                  Title(
+                    color: TotoColors.textColor,
+                    child: countComments(context, post),
+                  ),
+                ],
+              ),
+              &#47;&#47;File of the post
+              if (hasMediaPost(post))
+                buildMedia(context, post.filename, controller,
+                    initializeVideoPlayerFuture),
+              SizedBox(
+                width: double.infinity,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: Sizes.postContentPaddingHorizontal,
+                      vertical: Sizes.postContentPaddingVertical),
+                  child: Text(
+                    post.content,
+                    maxLines: Globals.postContentMaxLines,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">toto_android</a></li>
+  <li><a href="../../controller_controller/controller_controller-library.html">controller</a></li>
+  <li><a href="../../controller_controller/TotoController-class.html">TotoController</a></li>
+  <li class="self-crumb">buildPost static method</li>
+</ol>
+
+
+    <h5>TotoController class</h5>
+    <ol>
+
+        <li class="section-title"><a href="../../controller_controller/TotoController-class.html#constructors">Constructors</a></li>
+          <li><a href="../../controller_controller/TotoController/TotoController.html">TotoController</a></li>
+
+
+        <li class="section-title inherited">
+          <a href="../../controller_controller/TotoController-class.html#instance-properties">Properties</a>
+        </li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+
+        <li class="section-title inherited"><a href="../../controller_controller/TotoController-class.html#instance-methods">Methods</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+
+        <li class="section-title inherited"><a href="../../controller_controller/TotoController-class.html#operators">Operators</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+        <li class="section-title"><a href="../../controller_controller/TotoController-class.html#static-methods">Static methods</a></li>
+          <li><a href="../../controller_controller/TotoController/buildAccessButton.html">buildAccessButton</a></li>
+          <li><a href="../../controller_controller/TotoController/buildBoardFeed.html">buildBoardFeed</a></li>
+          <li><a href="../../controller_controller/TotoController/buildComment.html">buildComment</a></li>
+          <li><a href="../../controller_controller/TotoController/buildCommentMedia.html">buildCommentMedia</a></li>
+          <li><a href="../../controller_controller/TotoController/buildGeneralFeed.html">buildGeneralFeed</a></li>
+          <li><a href="../../controller_controller/TotoController/buildMainPost.html">buildMainPost</a></li>
+          <li><a href="../../controller_controller/TotoController/buildMedia.html">buildMedia</a></li>
+          <li><a href="../../controller_controller/TotoController/buildMediaImage.html">buildMediaImage</a></li>
+          <li><a href="../../controller_controller/TotoController/buildMediaVideo.html">buildMediaVideo</a></li>
+          <li><a href="../../controller_controller/TotoController/buildPost.html">buildPost</a></li>
+          <li><a href="../../controller_controller/TotoController/buildPostComments.html">buildPostComments</a></li>
+          <li><a href="../../controller_controller/TotoController/checkEmail.html">checkEmail</a></li>
+          <li><a href="../../controller_controller/TotoController/checkFileType.html">checkFileType</a></li>
+          <li><a href="../../controller_controller/TotoController/countComments.html">countComments</a></li>
+          <li><a href="../../controller_controller/TotoController/getBoardHeader.html">getBoardHeader</a></li>
+          <li><a href="../../controller_controller/TotoController/getHeader.html">getHeader</a></li>
+          <li><a href="../../controller_controller/TotoController/hasMediaComment.html">hasMediaComment</a></li>
+          <li><a href="../../controller_controller/TotoController/hasMediaPost.html">hasMediaPost</a></li>
+          <li><a href="../../controller_controller/TotoController/isFileVideo.html">isFileVideo</a></li>
+          <li><a href="../../controller_controller/TotoController/loggedIn.html">loggedIn</a></li>
+          <li><a href="../../controller_controller/TotoController/loggedOut.html">loggedOut</a></li>
+          <li><a href="../../controller_controller/TotoController/logIn.html">logIn</a></li>
+          <li><a href="../../controller_controller/TotoController/setComment.html">setComment</a></li>
+          <li><a href="../../controller_controller/TotoController/signUp.html">signUp</a></li>
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    toto_android
+      1.0.0+1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+
